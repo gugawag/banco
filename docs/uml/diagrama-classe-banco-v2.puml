@@ -1,0 +1,42 @@
+
+@startuml
+
+Banco -- Conta
+Cliente -- Conta
+class Banco{
+String nome;
+List<Conta> contas;
+List<Cliente> clientes;
+
+cadastrarCliente();
+cadastrarConta();
+List<Conta> getContas();
+List<Cliente> getClientes();
+}
+
+class Conta{
+private String numero;
+private String agencia;
+private Cliente cliente;
+private Double saldo;
+
+transferir(Conta origem, Conta destino, Double valor);
+debitar(Double valor);
+creditar(Double valor);
+
+}
+
+class ContaBonificada extends Conta{
+private Double porcentagemBonificacao;
+
+bonificar();
+}
+
+class Cliente{
+String nome;
+String cpf;
+
+}
+
+
+@enduml

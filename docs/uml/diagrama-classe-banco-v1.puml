@@ -1,0 +1,40 @@
+'Versao com saldo da conta publico para ver a importancia de metodos para acesso
+@startuml
+
+Banco -- Conta
+Cliente -- Conta
+class Banco{
+String nome;
+List<Conta> contas;
+List<Cliente> clientes;
+
+cadastrarCliente();
+cadastrarConta();
+List<Conta> getContas();
+List<Cliente> getClientes();
+}
+
+class Conta{
+private String numero;
+private String agencia;
+private Cliente cliente;
+public Double saldo;
+
+transferir(Conta origem, Conta destino, Double valor);
+
+}
+
+class ContaBonificada extends Conta{
+private Double porcentagemBonificacao;
+
+bonificar();
+}
+
+class Cliente{
+String nome;
+String cpf;
+
+}
+
+
+@enduml
