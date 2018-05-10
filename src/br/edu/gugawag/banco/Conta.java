@@ -1,16 +1,15 @@
 package br.edu.gugawag.banco;
 
-/**
- * Copyright CSJT-Conselho Superior da Justiça do Trabalho.
- *
- * @author Gustavo Wagner, gwmendes@trt13.jus.br
- * Criada em: 02/05/2018
- */
 public class Conta {
 
     private String numero;
 
     private Double saldo;
+
+    public Conta(String numero, Double saldo) {
+        this.numero = numero;
+        this.saldo = saldo;
+    }
 
     public String getNumero() {
         return numero;
@@ -28,17 +27,19 @@ public class Conta {
      * @param valor O valor a ser transferido
      */
     public void transferir(Conta destino, Double valor){
-        this.setSaldo(this.getSaldo()-valor);
-        destino.setSaldo(destino.getSaldo()+valor);
+        this.debitar(valor);
+        destino.creditar(valor);
     }
 
     public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double valor) {
-        if (valor <= this.saldo ){
-            this.saldo = saldo;
-        }
+    public void debitar(Double valor) {
+        this.saldo -= valor;
+    }
+
+    public void creditar(Double valor) {
+        this.saldo += valor;
     }
 }
