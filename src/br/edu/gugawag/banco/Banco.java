@@ -13,12 +13,17 @@ public class Banco {
         this.contas = new ArrayList<>();
     }
 
-    public void criarConta(String numero, Double saldo){
+    public void criarConta(String numero, Double saldo) throws ContaJahExistenteException{
+        Conta contaPesquisada = buscarConta(numero);
+        if (contaPesquisada != null){
+            throw new ContaJahExistenteException("A conta já existe!");
+        }
+
         Conta conta = new Conta(numero, saldo);
         this.contas.add(conta);
     }
 
-    public Conta buscarConta(String numero){
+    public Conta buscarConta(String numero) {
         for (Conta conta: this.getContas()) {
             if (numero.equals(conta.getNumero())){
                 return conta;

@@ -3,9 +3,13 @@ package br.edu.gugawag.banco;
 import java.util.Scanner;
 
 public class AppBanco {
+
     public static void main(String[] args) {
+
+        AppBanco gui = new AppBanco();
+        gui.menu();
+
         Banco banco = new Banco("BB");
-        Conta conta = new Conta("123", 100.0);
 
         Scanner entrada = new Scanner(System.in);
         System.out.println("Digite o número da conta: ");
@@ -13,14 +17,22 @@ public class AppBanco {
         System.out.println("Digite o saldo inicial: ");
         Double saldoInicial = entrada.nextDouble();
 
-        banco.criarConta(numeroConta, saldoInicial);
-        banco.criarConta("456", 0.0);
-
-        for (Conta c: banco.getContas()) {
-            System.out.println(c.getNumero() + " - " + c.getSaldo());
+        try {
+            banco.criarConta(numeroConta, saldoInicial);
+            banco.criarConta(numeroConta, saldoInicial);
+        } catch (ContaJahExistenteException e){
+            System.err.println(e.getMessage());
         }
 
-        Conta contaPesquisada = banco.buscarConta("321");
-        System.out.println(contaPesquisada.getSaldo());
+        for (Conta c: banco.getContas()) {
+            System.out.println(c);
+        }
+
     }
+
+    public void menu(){
+        System.out.println("1 - Cadastrar conta;");
+        System.out.println("2 - Buscar conta;");
+    }
+
 }

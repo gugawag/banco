@@ -1,6 +1,6 @@
 package br.edu.gugawag.banco;
 
-public class Conta {
+public class Conta extends Object {
 
     private String numero;
 
@@ -42,4 +42,9 @@ public class Conta {
     public void creditar(Double valor) {
         this.saldo += valor;
     }
+
+    public String toString() {
+        return this.getNumero() + " - " + this.getSaldo();
+    }
+
 }
