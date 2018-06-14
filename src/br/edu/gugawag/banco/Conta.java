@@ -1,10 +1,12 @@
 package br.edu.gugawag.banco;
 
-public class Conta extends Object {
+public class Conta {
 
     private String numero;
-
     private Double saldo;
+
+    public Conta(){
+    }
 
     public Conta(String numero, Double saldo) {
         this.numero = numero;
@@ -44,7 +46,6 @@ public class Conta extends Object {
     }
 
     public String toString() {
-        return this.getNumero() + " - " + this.getSaldo();
+        return "Número: " + this.getNumero() + " - Saldo: " + this.getSaldo();
     }
-
 }
